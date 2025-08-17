@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeartBeats - Login</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body {
+      background: url('background image.PNG') no-repeat center center fixed;
+      background-size: cover;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+    }
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); z-index: -1;
+    }
+    .form-container {
+      background: rgba(24,24,24,0.9);
+      padding: 2rem;
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      color: #fff;
+      text-align: center;
+    }
+    h2 { margin-bottom: 1.5rem; color: #1db954; }
+    .input-group { margin-bottom: 1rem; text-align: left; }
+    label { display: block; margin-bottom: 0.4rem; color: #bbb; font-size: 0.9rem; }
+    input {
+      width: 100%; padding: 0.8rem; border-radius: 8px;
+      border: none; background: #333; color: #fff; outline: none;
+    }
+    input:focus { background: #444; }
+    .submit-btn {
+      width: 100%; padding: 0.8rem; margin-top: 1rem;
+      background: #1db954; border: none; border-radius: 25px;
+      color: #fff; font-size: 1rem; cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .submit-btn:hover { background: #1ed760; }
+  </style>
+  <script>
+    function loginUser(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const user = { username: email.split('@')[0], email };
+      localStorage.setItem('heartbeatUser', JSON.stringify(user));
+      window.location.href = "player.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login to HeartBeats</h2>
+    <form onsubmit="loginUser(event)">
+      <div class="input-group">
+        <label for="email">Email or Username</label>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="submit-btn">Log In</button>
+    </form>
+  </div>
+</body>
+</html>
